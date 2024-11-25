@@ -32,16 +32,21 @@ class AuthenticatedSessionController extends Controller
         $url = '';
         if ($request->user()->role === 'admin') {
             $url = 'admin/dashboard';
+            $notification = array(
+                'message' => 'Welcome To Admin',
+                'alert-type' => 'success',
+            );
         } elseif ($request->user()->role === 'instructor') {
             $url = 'instructor/dashboard';
+            $notification = array(
+                'message' => 'Welcome To Instructor',
+                'alert-type' => 'success',
+            );
         } elseif ($request->user()->role === 'user') {
             $url = '/dashboard';
         }
 
-        $notification = array(
-            'message' => 'Welcome To Admin',
-            'alert-type' => 'success',
-        );
+        
 
         return redirect()->intended($url)->with($notification);
     }
