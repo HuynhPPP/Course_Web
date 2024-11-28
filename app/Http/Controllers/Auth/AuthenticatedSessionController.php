@@ -17,7 +17,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
-        return view('auth.login');
+        return view('frontend.dashboard.login');
     }
 
     /**
@@ -44,10 +44,11 @@ class AuthenticatedSessionController extends Controller
             );
         } elseif ($request->user()->role === 'user') {
             $url = '/dashboard';
+            $notification = array(
+                'message' => 'Welcome To Essay Learning',
+                'alert-type' => 'success',
+            );
         }
-
-        
-
         return redirect()->intended($url)->with($notification);
     }
 
