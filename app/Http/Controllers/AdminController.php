@@ -34,7 +34,6 @@ class AdminController extends Controller
     {
         $id = Auth::user()->id;
         $profileDate = User::find($id);
-
         return view('admin.admin_profile_view',compact('profileDate'));
     }
 

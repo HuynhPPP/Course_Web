@@ -45,7 +45,7 @@ class AuthenticatedSessionController extends Controller
         } elseif ($request->user()->role === 'user') {
             $url = '/dashboard';
             $notification = array(
-                'message' => 'Welcome To Essay Learning',
+                'message' => 'Welcome To Essay Learning Dashboard',
                 'alert-type' => 'success',
             );
         }
