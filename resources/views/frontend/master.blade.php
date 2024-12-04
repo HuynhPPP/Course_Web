@@ -26,6 +26,10 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
     <!-- end inject -->
+    <!-- Theme Style CSS -->
+	<link rel="stylesheet" href="{{ asset('backend/assets/css/dark-theme.css') }}"/>
+	<link rel="stylesheet" href="{{ asset('backend/assets/css/semi-dark.css') }}"/>
+	<link rel="stylesheet" href="{{ asset('backend/assets/css/header-colors.css') }}"/>
 </head>
 <body>
 
