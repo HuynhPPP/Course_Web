@@ -23,6 +23,10 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', [UserController::class, 'Index'])->name('index');
+Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login');
+Route::get('/instructor/login', [InstructorController::class, 'InstructorLogin'])->name('instructor.login');
+Route::get('/become/instructor', [AdminController::class, 'BecomeInstructor'])->name('become.instructor');
+Route::post('/instructor/register', [AdminController::class, 'InstructorRegister'])->name('instructor.register');
 
 Route::get('/dashboard', function () {
     return view('frontend.dashboard.index');
@@ -70,7 +74,7 @@ Route::middleware(['auth','roles:admin'])->group(function() {
     });
 }); // End Admin group middleware
 
-Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login');
+
 
 //// Instructor group middleware
 Route::middleware(['auth','roles:instructor'])->group(function() {
@@ -84,4 +88,3 @@ Route::post('/instructor/password/update', [InstructorController::class, 'Instru
 
 }); // End Instructor group middleware
 
-Route::get('/instructor/login', [InstructorController::class, 'InstructorLogin'])->name('instructor.login');
