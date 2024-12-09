@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\CourseController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -86,12 +87,21 @@ Route::middleware(['auth','roles:admin'])->group(function() {
 //// Instructor group middleware
 Route::middleware(['auth','roles:instructor'])->group(function() {
 
-Route::get('/instructor/dashboard', [InstructorController::class, 'InstructorDashboard'])->name('instructor.dashboard');
-Route::get('/instructor/logout', [InstructorController::class, 'InstructorLogout'])->name('instructor.logout');
-Route::get('/instructor/profile', [InstructorController::class, 'InstructorProfile'])->name('instructor.profile');
-Route::post('/instructor/profile/store', [InstructorController::class, 'InstructorProfileStore'])->name('instructor.profile.store');
-Route::get('/instructor/change/password', [InstructorController::class, 'InstructorChangePassword'])->name('instructor.change.password');
-Route::post('/instructor/password/update', [InstructorController::class, 'InstructorPasswordUpdate'])->name('instructor.password.update');
+    Route::get('/instructor/dashboard', [InstructorController::class, 'InstructorDashboard'])->name('instructor.dashboard');
+    Route::get('/instructor/logout', [InstructorController::class, 'InstructorLogout'])->name('instructor.logout');
+    Route::get('/instructor/profile', [InstructorController::class, 'InstructorProfile'])->name('instructor.profile');
+    Route::post('/instructor/profile/store', [InstructorController::class, 'InstructorProfileStore'])->name('instructor.profile.store');
+    Route::get('/instructor/change/password', [InstructorController::class, 'InstructorChangePassword'])->name('instructor.change.password');
+    Route::post('/instructor/password/update', [InstructorController::class, 'InstructorPasswordUpdate'])->name('instructor.password.update');
+
+    // Instructor All Route
+    Route::controller(CourseController::class)->group(function(){
+        Route::get('/all/course','AllCourse')->name('all.course');
+        Route::get('/add/course','AddCourse')->name('add.course');
+        Route::get('/subcategory/ajax/{category_id}','GetSubcategory');
+        Route::post('/store/course','StoreCourse')->name('store.course');
+
+    });
 
 }); // End Instructor group middleware
 

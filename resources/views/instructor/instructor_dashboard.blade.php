@@ -12,6 +12,7 @@
 	<link href="{{ asset('backend/assets/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />
 	<link href="{{ asset('backend/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet" />
 	<link href="{{ asset('backend/assets/plugins/metismenu/css/metisMenu.min.css') }}" rel="stylesheet"/>
+	<link rel="stylesheet" href="{{ asset('backend/assets/plugins/trumbowyg/trumbowyg.min.css') }}" />
 	<!-- loader-->
 	<link href="{{ asset('backend/assets/css/pace.min.css') }}" rel="stylesheet"/>
 	<script src="{{ asset('backend/assets/js/pace.min.js') }}"></script>
@@ -25,6 +26,9 @@
 	<link rel="stylesheet" href="{{ asset('backend/assets/css/dark-theme.css') }}"/>
 	<link rel="stylesheet" href="{{ asset('backend/assets/css/semi-dark.css') }}"/>
 	<link rel="stylesheet" href="{{ asset('backend/assets/css/header-colors.css') }}"/>
+	<!-- Datatable -->
+	<link href="{{ asset('backend/assets/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
+	<!-- End Datatable -->
 	<!-- Toastr -->
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 	<!-- Title -->
@@ -67,12 +71,26 @@
     <script src="{{ asset('backend/assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
 	<script src="{{ asset('backend/assets/plugins/chartjs/js/chart.js') }}"></script>
 	<script src="{{ asset('backend/assets/js/index.js') }}"></script>
+	<script src="{{ asset('backend/assets/js/validate.min.js') }}"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+	<script src="{{ asset('backend/assets/js/code.js') }}"></script>
+	<script src="{{ asset('backend/assets/plugins/trumbowyg/trumbowyg.min.js') }}"></script>
 	<!--app JS-->
 	<script src="{{ asset('backend/assets/js/app.js') }}"></script>
 	<script>
 		new PerfectScrollbar(".app-container")
 	</script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+	<!-- Datatable-->
+	<script src="{{ asset('backend/assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+	<script src="{{ asset('backend/assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
+	<script>
+		$(document).ready(function() {
+			$('#example').DataTable();
+		  } );
+	</script>
+	<!-- End Datatable-->
 
 	<script>
 	 @if(Session::has('message'))
@@ -96,5 +114,10 @@
 	 }
 	 @endif 
 	</script>	
+
+	<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+	<script>
+		$('.textarea').trumbowyg();
+	</script>
 </body>
 </html>
