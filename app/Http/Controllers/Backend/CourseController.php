@@ -8,6 +8,8 @@ use App\Models\Category;
 use App\Models\SubCategory;
 use App\Models\Course;
 use App\Models\Course_goal;
+use App\Models\CourseSection;
+use App\Models\CourseLecture;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 use Illuminate\Http\Request;
@@ -252,6 +254,32 @@ class CourseController extends Controller
 
         $notification = array(
             'message' => 'Course Deleted Successfully',
+            'alert-type' => 'success',
+        );
+        return redirect()->back()->with($notification);
+    }
+
+    public function AddCourseLecture($id)
+    {
+        $course = Course::find($id);
+
+        $section = CourseSection::where('course_id',$id)->latest()->get();
+
+        return view('instructor.courses.section.add_course_lecture',
+        compact('course','section'));
+    }
+
+    public function AddCourseSection(Request $request)
+    {
+        $course_id = $request->id;
+
+        CourseSection::insert([
+            'course_id' => $course_id,
+            'section_title' => $request->section_title,
+        ]);
+
+        $notification = array(
+            'message' => 'Course Section Added Successfully',
             'alert-type' => 'success',
         );
         return redirect()->back()->with($notification);
