@@ -117,6 +117,7 @@ Route::middleware(['auth','roles:instructor'])->group(function() {
         Route::get('/edit/lecture/{id}','EditLecture')->name('edit.lecture');
         Route::post('/update/course/lecture','UpdateCourseLecture')->name('update.course.lecture');
         Route::get('/delete/lecture/{id}','DeleteLecture')->name('delete.lecture');
+        Route::get('/delete/section/{id}','DeleteSection')->name('delete.section');
     });
 
 }); // End Instructor group middleware

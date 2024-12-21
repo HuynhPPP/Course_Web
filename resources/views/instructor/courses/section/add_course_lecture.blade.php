@@ -32,9 +32,9 @@
                     <div class="card-body">
                         <div class="d-flex align-items-center">
                             <h6> {{ $item->section_title }} </h6>
-                            <button type="submit" class="btn btn-danger px-2 ms-auto"> 
+                            <a href="{{ route('delete.section',['id' => $item->id]) }}" class="btn btn-danger px-2 ms-auto" id="delete"> 
                                 Delete Section
-                            </button> &nbsp;
+                            </a> &nbsp;
                             <a class="btn btn-primary" 
                                 onclick="addLectureDiv({{ $course->id }}, {{ $item->id }}, 
                                         'lectureContainer{{ $key }}' )" id="addLectureBtn($key)"

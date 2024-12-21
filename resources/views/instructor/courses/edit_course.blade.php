@@ -135,7 +135,7 @@
 
                     <div class="form-group col-md-12">
                         <label for="input1" class="form-label">Course Prerequisites</label>
-                        <textarea class="form-control" 
+                        <textarea class="form-control textarea" 
                             id="input11" 
                             name="prerequisites"
                             rows="3"

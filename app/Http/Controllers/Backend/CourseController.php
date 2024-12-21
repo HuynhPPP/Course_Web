@@ -334,4 +334,29 @@ class CourseController extends Controller
         );
         return redirect()->back()->with($notification);
     }
+
+    public function DeleteSection($id)
+    {
+        $lectures = CourseLecture::where('section_id', $id);
+        if ($lectures->exists()) {
+            $lectures->delete();
+        }
+        
+        $section = CourseSection::find($id);
+        if ($section) {
+            $section->delete();
+
+            $notification = array(
+                'message' => 'Section and related lectures deleted successfully',
+                'alert-type' => 'success',
+            );
+        } else {
+            $notification = array(
+                'message' => 'Section not found',
+                'alert-type' => 'error',
+            );
+        }
+
+        return redirect()->back()->with($notification);
+        }
 }
