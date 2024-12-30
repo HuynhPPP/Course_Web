@@ -6,6 +6,7 @@ use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CourseController;
+use App\Http\Controllers\Frontend\IndexController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,11 +24,15 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
+//// Route Accessable for All
 Route::get('/', [UserController::class, 'Index'])->name('index');
 Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login');
 Route::get('/instructor/login', [InstructorController::class, 'InstructorLogin'])->name('instructor.login');
 Route::get('/become/instructor', [AdminController::class, 'BecomeInstructor'])->name('become.instructor');
 Route::post('/instructor/register', [AdminController::class, 'InstructorRegister'])->name('instructor.register');
+Route::get('/course/details/{id}/{slug}', [IndexController::class, 'CourseDetails']);
+
+//// End Route Accessable for All
 
 Route::get('/dashboard', function () {
     return view('frontend.dashboard.index');

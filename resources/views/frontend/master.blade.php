@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/fancybox.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/tooltipster.bundle.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/plyr.css') }}">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
     <!-- end inject -->
     <!-- Theme Style CSS -->
@@ -82,9 +83,14 @@
 <script src="{{ asset('frontend/js/datedropper.min.js') }}"></script>
 <script src="{{ asset('frontend/js/emojionearea.min.js') }}"></script>
 <script src="{{ asset('frontend/js/tooltipster.bundle.min.js') }}"></script>
+<script src="{{ asset('frontend/js/plyr.js') }}"></script>
 <script src="{{ asset('frontend/js/jquery.lazy.min.js') }}"></script>
 <script src="{{ asset('frontend/js/main.js') }}"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+<script>
+    var player = new Plyr('#player');
+</script>
 
 <script>
     @if(Session::has('message'))
