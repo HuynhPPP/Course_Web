@@ -537,19 +537,23 @@
                             </ul>
                         </div>
                     </div><!-- end card -->
+
                     <div class="card card-item">
                         <div class="card-body">
                             <h3 class="card-title fs-18 pb-2">Course Categories</h3>
                             <div class="divider"><span></span></div>
                             <ul class="generic-list-item">
                                 @foreach ($categories as $category)
-                                    <li><a href="#">{{ $category->category_name }}</a></li>
-                                @endforeach
-                                
-
+                                    <li>
+                                        <a href="{{ url('category/'.$category->id.'/'.$category->category_slug) }}">
+                                            {{ $category->category_name }}
+                                        </a>
+                                    </li>
+                                @endforeach                          
                             </ul>
                         </div>
                     </div><!-- end card -->
+                    
                     <div class="card card-item">
                         <div class="card-body">
                             <h3 class="card-title fs-18 pb-2">Related Courses</h3>
