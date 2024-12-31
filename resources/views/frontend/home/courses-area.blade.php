@@ -61,9 +61,7 @@
                                         @else
                                             <div class="course-badge blue">{{ round($discount) }}%</div>
                                         @endif
-                                        
-
-
+                                    
                                     </div>
                                 </div><!-- end card-image -->
                                 <div class="card-body">
@@ -73,7 +71,11 @@
                                             {{ $course->course_name }}
                                         </a>
                                     </h5>
-                                    <p class="card-text"><a href="teacher-detail.html">{{ $course['user']['name'] }}</a></p>
+                                    <p class="card-text">
+                                        <a href="{{ route('instructor.details',$course->instructor_id) }}">
+                                            {{ $course['user']['name'] }}
+                                        </a>
+                                    </p>
                                     <div class="rating-wrap d-flex align-items-center py-2">
                                         <div class="review-stars">
                                             <span class="rating-number">4.4</span>
@@ -123,8 +125,19 @@
                                 </div><!-- end card-image -->
                                 <div class="card-body">
                                     <h6 class="ribbon ribbon-blue-bg fs-14 mb-3">{{ $course->label }}</h6>
-                                    <h5 class="card-title"><a href="{{ url('course/details/'.$course->id.'/'.$course->course_name_slug) }}">{{ $course->course_name }}</a></h5>
-                                    <p class="card-text"><a href="teacher-detail.html">{{ $course['user']['name'] }}</a></p>
+
+                                    <h5 class="card-title">
+                                        <a href="{{ url('course/details/'.$course->id.'/'.$course->course_name_slug) }}">
+                                            {{ $course->course_name }}
+                                        </a>
+                                    </h5>
+
+                                    <p class="card-text">
+                                        <a href="{{ route('instructor.details',$course->instructor_id) }}">
+                                            {{ $course['user']['name'] }}
+                                        </a>
+                                    </p>
+
                                     <div class="rating-wrap d-flex align-items-center py-2">
                                         <div class="review-stars">
                                             <span class="rating-number">4.4</span>
@@ -179,7 +192,7 @@
     <div id="tooltip_content_1{{ $item->id }}">
         <div class="card card-item">
             <div class="card-body">
-                <p class="card-text pb-2">By <a href="teacher-detail.html">{{ $item['user']['name'] }}</a></p>
+                <p class="card-text pb-2">By <a href="{{ route('instructor.details',$course->instructor_id) }}">{{ $item['user']['name'] }}</a></p>
                 <h5 class="card-title pb-1"><a href="course-details.html">{{ $item->course_name }}</a></h5>
                 <div class="d-flex align-items-center pb-1">
 

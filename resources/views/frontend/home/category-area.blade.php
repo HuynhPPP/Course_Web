@@ -34,9 +34,14 @@
                         <img  class="cat__img lazy" src="{{ asset($item->image) }}" data-src="{{ asset($item->image) }}" alt="Category image">
                         <div class="category-content">
                             <div class="category-inner">
-                                <h3 class="cat__title"><a href="#">{{ $item->category_name }}</a></h3>
+                                <h3 class="cat__title">
+                                    <a href="{{ url('category/'.$item->id.'/'.$item->category_slug) }}">
+                                        {{ $item->category_name }}
+                                    </a>
+                                </h3>
                                 <p class="cat__meta">{{ count($course) }} courses</p>
-                                <a href="#" class="btn theme-btn theme-btn-sm theme-btn-white">Explore<i class="la la-arrow-right icon ml-1"></i></a>
+                                <a href="{{ url('category/'.$item->id.'/'.$item->category_slug) }}" 
+                                   class="btn theme-btn theme-btn-sm theme-btn-white">Explore<i class="la la-arrow-right icon ml-1"></i></a>
                             </div>
                         </div><!-- end category-content -->
                     </div><!-- end category-item -->
