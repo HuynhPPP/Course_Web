@@ -15,6 +15,8 @@
     <!-- Favicon -->
     <link rel="icon" sizes="16x16" href="{{ asset('frontend/') }}{{ asset('frontend/images/favicon.png') }}">
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <!-- inject:css -->
     <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/line-awesome.css') }}">
@@ -87,6 +89,7 @@
 <script src="{{ asset('frontend/js/jquery.lazy.min.js') }}"></script>
 <script src="{{ asset('frontend/js/main.js') }}"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 <script>
     var player = new Plyr('#player');
@@ -114,5 +117,8 @@
     }
     @endif 
    </script>
+
+@include('frontend.body.script')
+
 </body>
 </html>

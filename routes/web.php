@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CourseController;
 use App\Http\Controllers\Frontend\IndexController;
+use App\Http\Controllers\Frontend\WishListController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,6 +35,7 @@ Route::get('/course/details/{id}/{slug}', [IndexController::class, 'CourseDetail
 Route::get('/category/{id}/{slug}', [IndexController::class, 'CategoryCourse']);
 Route::get('/subcategory/{id}/{slug}', [IndexController::class, 'SubCategoryCourse']);
 Route::get('/instructor/details/{id}', [IndexController::class, 'InstructorDetails'])->name('instructor.details');
+Route::post('/add-to-wishlist/{course_id}', [WishListController::class, 'AddToWishlist']);
 
 //// End Route Accessable for All
 
@@ -41,6 +43,7 @@ Route::get('/dashboard', function () {
     return view('frontend.dashboard.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+/// User group middleware
 Route::middleware('auth')->group(function () {
     Route::get('/user/profile', [UserController::class, 'UserProfile'])->name('user.profile');
     Route::post('/user/profile/update', [UserController::class, 'UserProfileUpdate'])->name('user.profile.update');
@@ -48,7 +51,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/user/change/password', [UserController::class, 'UserChangePassword'])->name('user.change.password');
     Route::post('/user/password/update', [UserController::class, 'UserPasswordUpdate'])->name('user.password.update');
     
+    // User Wishlist All Route
+    Route::controller(WishListController::class)->group(function(){
+        Route::get('/user/wishlist','AllWishlist')->name('user.wishlist');
+        Route::get('/get-wishlist-course','GetWishlistCourse');
+        Route::get('/wishlist-remove/{id}','RemoveWishlistCourse');
+
+    });
+
 });
+/// End User group middleware
 
 require __DIR__.'/auth.php';
 
