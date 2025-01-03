@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\Course;
 
 class AdminController extends Controller
 {
@@ -150,5 +151,32 @@ class AdminController extends Controller
             $user->save();
         }
         return response()->json(['message' => 'User Status Updated Successfully']);
+    }
+
+    public function AdminAllCourse()
+    {
+        $courses = Course::latest()->get();
+
+        return view('admin.backend.courses.all_course',compact('courses'));
+    }
+
+    public function UpdateCouseStatus(Request $request)
+    {
+        $courseId = $request->input('course_id');
+        $isChecked = $request->input('is_checked',0);
+
+        $course = Course::find($courseId);
+            if ($course) {
+            $course->status = $isChecked;
+            $course->save();
+        }
+        return response()->json(['message' => 'Course Status Updated Successfully']);
+    }
+
+    public function AdminCourseDetails($id)
+    {
+        $course = Course::find($id);
+
+        return view('admin.backend.courses.course_details',compact('course'));
     }
 }

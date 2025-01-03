@@ -22,7 +22,7 @@
         <li class="menu-label">UI Elements</li>
         <li>
             <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><i class='bx bx-cart'></i>
+                <div class="parent-icon"><i class="bx bx-folder"></i>
                 </div>
                 <div class="menu-title">Manage Category</div>
             </a>
@@ -33,6 +33,7 @@
                 </li>
             </ul>
         </li>
+
         <li>
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class='bx bx-bookmark-heart'></i>
@@ -41,6 +42,18 @@
             </a>
             <ul>
                 <li> <a href="{{ route('all.instructor') }}"><i class='bx bx-radio-circle'></i>All Instructor</a>
+                </li>
+            </ul>
+        </li>
+
+        <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon"><i class='bx bx-bookmark-heart'></i>
+                </div>
+                <div class="menu-title">Manage Course</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('admin.all.course') }}"><i class='bx bx-radio-circle'></i>All Course</a>
                 </li>
             </ul>
         </li>
