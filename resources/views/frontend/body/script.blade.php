@@ -517,7 +517,6 @@
             }
         });
     }
-    couponRemove();
 </script>
 
 {{-- /// End Remove Coupon /// --}}

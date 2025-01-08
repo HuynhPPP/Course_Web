@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-//// Route Accessable for All
+/// Route Accessable for All
 Route::get('/', [UserController::class, 'Index'])->name('index');
 Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login');
 Route::get('/instructor/login', [InstructorController::class, 'InstructorLogin'])->name('instructor.login');
@@ -44,6 +44,10 @@ Route::get('/cart/data/', [CartController::class, 'CartData']);
 Route::post('/coupon-apply', [CartController::class, 'CouponApply']);
 Route::get('/coupon-calculation', [CartController::class, 'CouponCalculation']);
 Route::get('/coupon-remove', [CartController::class, 'CouponRemove']);
+
+/// Checkout Page Route
+Route::get('/checkout', [CartController::class, 'CheckoutCreate'])->name('checkout');
+Route::post('/payment', [CartController::class, 'Payment'])->name('payment');
 
 /// Get Data From Mini Cart
 Route::get('/course/mini/cart/', [CartController::class, 'AddMiniCart']);
