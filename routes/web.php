@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CourseController;
 use App\Http\Controllers\Backend\CouponController;
+use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\WishListController;
 use App\Http\Controllers\Frontend\CartController;
@@ -140,6 +141,13 @@ Route::middleware(['auth','roles:admin'])->group(function() {
         Route::post('/admin/store/coupon','AdminStoreCoupon')->name('admin.store.coupon');
         Route::post('/admin/update/coupon','AdminUpdateCoupon')->name('admin.update.coupon');
         Route::get('/admin/delete/coupon/{id}','AdminDeleteCoupon')->name('admin.delete.coupon');
+        
+    });
+
+    // Admin Coupon All Route
+    Route::controller(SettingController::class)->group(function(){
+        Route::get('/smtp/setting','SmtpSetting')->name('smtp.setting');
+        Route::post('/update/stmp','SmtpUpdate')->name('update.stmp');
         
     });
 

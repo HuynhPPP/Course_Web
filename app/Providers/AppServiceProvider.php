@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Models\SmtpSetting;
+use Config;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +21,25 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        if (\Schema::hasTable('smtp_settings')) {
+            $smtpSetting = SmtpSetting::first();
+
+            if ($smtpSetting) {
+                $data = [
+                    'driver' => $smtpSetting->mailer,
+                    'host' => $smtpSetting->host,
+                    'port' => $smtpSetting->port,
+                    'username' => $smtpSetting->username,
+                    'password' => $smtpSetting->password,
+                    'encryption' => $smtpSetting->encryption,
+                    'from' => [
+                        'address' => $smtpSetting->from_address,
+                        'name' => 'Easycourselms',
+                    ],
+                ];
+
+                Config::set('mail',$data);
+            }
+        }
     }
 }

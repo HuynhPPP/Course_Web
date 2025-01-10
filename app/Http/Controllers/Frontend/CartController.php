@@ -18,7 +18,9 @@ use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use App\Mail\OrderConfirm;
 
 class CartController extends Controller
 {
@@ -263,6 +265,22 @@ class CartController extends Controller
         } // End Foreach
 
         $request->session()->forget('cart');
+
+        $paymentId = $data->id;
+
+        /// Start Send Email to Student ///
+        $sendEmai = Payment::find($paymentId);
+        
+        $data = [
+            'invoice_no' => $sendEmai->invoice_no ?? 'N/A',
+            'amount' => $sendEmai->total_amount ?? 0,
+            'name' => $sendEmai->name ?? 'Unknown',
+            'email' => $sendEmai->email ?? $request->email,
+        ];
+
+        Mail::to($request->email)->send(new OrderConfirm($data));
+
+        /// End Send Email to Student ///
 
         if ($request->cash_delivery == 'stripe') {
             echo "stripe";
