@@ -159,7 +159,7 @@
                                            <span class="fs-15 text-gray font-weight-medium">{{ count($lectures) }} lectures</span>
                                        </button>
                                    </div><!-- end card-header -->
-                                   <div id="collapse{{ $section->id }}" class="collapse show" aria-labelledby="heading{{ $section->id }}" data-parent="#accordion">
+                                   <div id="collapse{{ $section->id }}" class="collapse" aria-labelledby="heading{{ $section->id }}" data-parent="#accordion">
                                        <div class="card-body">
                                            <ul class="generic-list-item">
                                             @foreach ($lectures as $lecture)
@@ -506,7 +506,10 @@
                                     </button>
                                     
                                     <button type="button" 
-                                            class="btn theme-btn w-100 theme-btn-white mb-2">
+                                            class="btn theme-btn w-100 theme-btn-white mb-2"
+                                            onclick="buyCourse({{ $course->id }}, '{{ $course->course_name }}', 
+                                                              '{{ $course->instructor_id }}', '{{ $course->course_name_slug }}')"
+                                    >
                                         <i class="la la-shopping-bag mr-1"></i> Buy this course
                                     </button>
 
