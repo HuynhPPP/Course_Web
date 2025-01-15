@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CourseController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\SettingController;
+use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\WishListController;
 use App\Http\Controllers\Frontend\CartController;
@@ -152,6 +153,15 @@ Route::middleware(['auth','roles:admin'])->group(function() {
         
     });
 
+    // Admin All Order Route
+    Route::controller(OrderController::class)->group(function(){
+        Route::get('/admin/pending/order','AdminPendingOrder')->name('admin.pending.order');
+        Route::get('/admin/confirm/order','AdminConfirmOrder')->name('admin.confirm.order');
+        Route::get('/admin/order/details/{id}','AdminOrderDetails')->name('admin.order.details');
+        Route::get('/pending-confirm/{id}','PendingToConfirm')->name('pending-confirm');
+        
+    });
+
 
 }); // End Admin group middleware
 
@@ -191,6 +201,13 @@ Route::middleware(['auth','roles:instructor'])->group(function() {
         Route::post('/update/course/lecture','UpdateCourseLecture')->name('update.course.lecture');
         Route::get('/delete/lecture/{id}','DeleteLecture')->name('delete.lecture');
         Route::get('/delete/section/{id}','DeleteSection')->name('delete.section');
+    });
+
+    // Instructor All Orders Route
+    Route::controller(OrderController::class)->group(function(){
+        Route::get('/instructor/all/order/','InstructorAllOrder')->name('instructor.all.order');
+        Route::get('/instructor/order/details/{payment_id}','InstructorOrderDetails')->name('instructor.order.details');
+        Route::get('/instructor/order/invoice/{payment_id}','InstructorOrderInvoice')->name('instructor.order.invoice');
     });
 
 }); // End Instructor group middleware
