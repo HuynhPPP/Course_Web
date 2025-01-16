@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\CourseController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\OrderController;
+use App\Http\Controllers\Backend\QuestionController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\WishListController;
 use App\Http\Controllers\Frontend\CartController;
@@ -83,6 +84,19 @@ Route::middleware('auth')->group(function () {
         Route::get('/get-wishlist-course','GetWishlistCourse');
         Route::get('/wishlist-remove/{id}','RemoveWishlistCourse');
 
+    });
+
+    // User My Course All Route
+    Route::controller(OrderController::class)->group(function(){
+        Route::get('/my/course','MyCourse')->name('my.course');
+        Route::get('/course/view/{course_id}','CourseView')->name('course.view'); 
+        
+    });
+
+    // User Question All Route
+    Route::controller(QuestionController::class)->group(function(){
+        Route::post('/user/question','UserQuestion')->name('user.question');
+        
     });
 
 });
@@ -208,6 +222,13 @@ Route::middleware(['auth','roles:instructor'])->group(function() {
         Route::get('/instructor/all/order/','InstructorAllOrder')->name('instructor.all.order');
         Route::get('/instructor/order/details/{payment_id}','InstructorOrderDetails')->name('instructor.order.details');
         Route::get('/instructor/order/invoice/{payment_id}','InstructorOrderInvoice')->name('instructor.order.invoice');
+    });
+
+    // Question All Route
+    Route::controller(QuestionController::class)->group(function(){
+        Route::get('/instructor/all/question/','InstructorAllQuestion')->name('instructor.all.question');
+        Route::get('/question/details/{id}','QuestionDetails')->name('question.details');
+        Route::post('/instructor/reply','InstructorReply')->name('instructor.reply');
     });
 
 }); // End Instructor group middleware
