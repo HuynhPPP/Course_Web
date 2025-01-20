@@ -10,10 +10,12 @@ use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\QuestionController;
+use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\WishListController;
 use App\Http\Controllers\Frontend\CartController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\RedirectIfAuthenticated;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,8 +34,8 @@ use Illuminate\Support\Facades\Route;
 
 /// Route Accessable for All
 Route::get('/', [UserController::class, 'Index'])->name('index');
-Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login');
-Route::get('/instructor/login', [InstructorController::class, 'InstructorLogin'])->name('instructor.login');
+Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login')->middleware(RedirectIfAuthenticated::class);
+Route::get('/instructor/login', [InstructorController::class, 'InstructorLogin'])->name('instructor.login')->middleware(RedirectIfAuthenticated::class);
 Route::get('/become/instructor', [AdminController::class, 'BecomeInstructor'])->name('become.instructor');
 Route::post('/instructor/register', [AdminController::class, 'InstructorRegister'])->name('instructor.register');
 Route::get('/course/details/{id}/{slug}', [IndexController::class, 'CourseDetails']);
@@ -69,7 +71,7 @@ Route::controller(CartController::class)->group(function(){
 
 Route::get('/dashboard', function () {
     return view('frontend.dashboard.index');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth','roles:user','verified'])->name('dashboard');
 
 /// User group middleware
 Route::middleware('auth')->group(function () {
@@ -174,6 +176,15 @@ Route::middleware(['auth','roles:admin'])->group(function() {
         Route::get('/admin/confirm/order','AdminConfirmOrder')->name('admin.confirm.order');
         Route::get('/admin/order/details/{id}','AdminOrderDetails')->name('admin.order.details');
         Route::get('/pending-confirm/{id}','PendingToConfirm')->name('pending-confirm');
+        
+    });
+
+    // Admin Report All Route
+    Route::controller(ReportController::class)->group(function(){
+        Route::get('/report/view','ReportView')->name('report.view');
+        Route::post('/search/by/date','SearchByDate')->name('search.by.date');
+        Route::post('/search/by/month','SearchByMonth')->name('search.by.month');
+        Route::post('/search/by/year','SearchByYear')->name('search.by.year');
         
     });
 
