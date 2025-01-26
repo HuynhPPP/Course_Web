@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\QuestionController;
 use App\Http\Controllers\Backend\ReportController;
+use App\Http\Controllers\Backend\ReviewController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\WishListController;
 use App\Http\Controllers\Frontend\CartController;
@@ -48,6 +49,7 @@ Route::post('/buy/data/store/{id}', [CartController::class, 'BuyToCart']);
 Route::get('/cart/data/', [CartController::class, 'CartData']);
 
 Route::post('/coupon-apply', [CartController::class, 'CouponApply']);
+Route::post('/instructor-coupon-apply', [CartController::class, 'InstructorCouponApply']);
 Route::get('/coupon-calculation', [CartController::class, 'CouponCalculation']);
 Route::get('/coupon-remove', [CartController::class, 'CouponRemove']);
 
@@ -67,6 +69,8 @@ Route::controller(CartController::class)->group(function(){
     Route::get('/cart-remove/{rowId}', [CartController::class, 'CartRemove']);
 });
 
+// Review All Route
+Route::post('/store/review', [ReviewController::class, 'StoreReview'])->name('store.review');
 //// End Route Accessable for All
 
 Route::get('/dashboard', function () {
