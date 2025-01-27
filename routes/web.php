@@ -192,6 +192,14 @@ Route::middleware(['auth','roles:admin'])->group(function() {
         
     });
 
+    // Admin Review All Route
+    Route::controller(ReviewController::class)->group(function(){
+        Route::get('/admin/pending/review','AdminPendingReview')->name('admin.pending.review');
+        Route::get('/admin/active/review','AdminActiveReview')->name('admin.active.review');
+        Route::post('/update/review/status','UpdateReviewStatus')->name('update.review.status');
+        
+    });
+
 
 }); // End Admin group middleware
 
@@ -256,6 +264,12 @@ Route::middleware(['auth','roles:instructor'])->group(function() {
         Route::post('/instructor/update/coupon','InstructorUpdateCoupon')->name('instructor.update.coupon');
         Route::get('/instructor/delete/coupon/{id}','InstructorDeleteCoupon')->name('instructor.delete.coupon');
 
+    });
+
+    // Instructor Review All Route
+    Route::controller(ReviewController::class)->group(function(){
+        Route::get('/instructor/pending/review','InstructorAllReview')->name('instructor.all.review');
+        
     });
 
 }); // End Instructor group middleware

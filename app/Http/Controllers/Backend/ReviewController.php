@@ -38,4 +38,42 @@ class ReviewController extends Controller
         return redirect()->back()->with($notification);
 
     }
+
+    public function AdminPendingReview()
+    {
+        $review = Review::where('status',0)->orderBy('id','DESC')->get();
+
+        return view('admin.backend.review.pending_review',compact('review'));
+    }
+
+    public function UpdateReviewStatus(Request $request)
+    {
+        $reviewId = $request->input('review_Id');
+        $isChecked = $request->input('is_checked',0);
+
+        $user = Review::find($reviewId);
+            if ($user) {
+            $user->status = $isChecked;
+            $user->save();
+        }
+        return response()->json(['message' => 'Review Status Updated Successfully']);
+    }
+
+    public function AdminActiveReview()
+    {
+        $review = Review::where('status',1)->orderBy('id','DESC')->get();
+
+        return view('admin.backend.review.active_review',compact('review'));
+    }
+
+    public function InstructorAllReview()
+    {
+        $id = Auth::user()->id;
+        $review = Review::where('instructor_id',$id)
+                        ->where('status',1)
+                        ->orderBy('id','DESC')
+                        ->get();
+
+        return view('instructor.review.all_review',compact('review'));               
+    }
 }
