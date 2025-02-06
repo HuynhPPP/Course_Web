@@ -8,18 +8,21 @@
 	<!--favicon-->
 	<link rel="icon" href="{{ asset('backend/assets/images/logo.png') }}" type="image/png"/>
 	<meta name="csrf-token" content="{{ csrf_token() }}">
+
 	<!--plugins-->
 	<link href="{{ asset('backend/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet"/>
 	<link href="{{ asset('backend/assets/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />
+	<link href="{{ asset('backend/assets/plugins/input-tags/css/tagsinput.css') }}" rel="stylesheet" />
 	<link href="{{ asset('backend/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet" />
 	<link href="{{ asset('backend/assets/plugins/metismenu/css/metisMenu.min.css') }}" rel="stylesheet"/>
 	<!-- loader-->
 	<link href="{{ asset('backend/assets/css/pace.min.css') }}" rel="stylesheet"/>
 	<script src="{{ asset('backend/assets/js/pace.min.js') }}"></script>
+	<link rel="stylesheet" href="{{ asset('backend/assets/plugins/trumbowyg/trumbowyg.min.css') }}" />
 
 	<!-- Bootstrap CSS -->
 	<link href="{{ asset('backend/assets/css/bootstrap.min.css') }}" rel="stylesheet">
-	<link href="{{ asset('backend/') }}assets/css/bootstrap-extended.css" rel="stylesheet">
+	<link href="{{ asset('backend/assets/css/bootstrap-extended.css') }}" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 	<link href="{{ asset('backend/assets/css/app.css') }}" rel="stylesheet">
 	<link href="{{ asset('backend/assets/css/icons.css') }}" rel="stylesheet">
@@ -83,6 +86,9 @@
 	<script src="{{ asset('backend/assets/js/validate.min.js') }}"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 	<script src="{{ asset('backend/assets/js/code.js') }}"></script>
+	<script src="{{ asset('backend/assets/plugins/trumbowyg/trumbowyg.min.js') }}"></script>
+	<!--TagsInput JS-->
+	<script src="{{ asset('backend/assets/plugins/input-tags/js/tagsinput.js') }}"></script>
 	<!--app JS-->
 	<script src="{{ asset('backend/assets/js/app.js') }}"></script>
 	<script>
@@ -122,6 +128,9 @@
 		break; 
 	 }
 	 @endif 
-	</script>	
+	</script>
+	<script>
+		$('.textarea').trumbowyg();
+	</script>
 </body>
 </html>
