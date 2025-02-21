@@ -190,4 +190,37 @@ class BlogController extends Controller
         // );
         return redirect()->back();
     }
+
+    public function BlogDetails($slug)
+    {
+        $blog = BlogPost::where('post_slug',$slug)->first();
+        $tag = $blog->post_tags;
+        $tags_all = explode(',',$tag);
+        $blog_category = BlogCategory::latest()->get();
+        $post = BlogPost::latest()->limit(3)->get();
+
+        return view('frontend.blog.blog_details',compact('blog',
+            'tags_all','blog_category','post'));
+    }
+
+    public function BlogCategoryLists($id)
+    {
+        $blog = BlogPost::where('blogCategory_id',$id)->get();
+        $blog_category = BlogCategory::latest()->get();
+        $breadcum_category = BlogCategory::where('id',$id)->first();
+        $post = BlogPost::latest()->limit(3)->get();
+
+        return view('frontend.blog.blog_cat_list',
+        compact('blog','breadcum_category','blog_category','post'));
+    }
+
+    public function BlogLists()
+    {
+        $blog = BlogPost::latest()->get();
+        $blog_category = BlogCategory::latest()->get();
+        $post = BlogPost::latest()->limit(3)->get();
+
+        return view('frontend.blog.blog_list',
+        compact('blog','blog_category','post'));
+    }
 }

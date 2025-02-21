@@ -123,7 +123,7 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#">blog </a>
+                                        <a href="{{ route('blog_all') }}">blog </a>
                                     </li>
                                 </ul><!-- end ul -->
                             </nav><!-- end main-menu -->

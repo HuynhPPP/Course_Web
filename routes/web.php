@@ -73,6 +73,9 @@ Route::controller(CartController::class)->group(function(){
 
 // Review All Route
 Route::post('/store/review', [ReviewController::class, 'StoreReview'])->name('store.review');
+Route::get('/blog/details/{slug}', [BlogController::class, 'BlogDetails']);
+Route::get('/blog/category/list/{id}', [BlogController::class, 'BlogCategoryLists']);
+Route::get('/blog', [BlogController::class, 'BlogLists'])->name('blog_all');
 //// End Route Accessable for All
 
 Route::get('/dashboard', function () {
@@ -224,7 +227,6 @@ Route::middleware(['auth','roles:admin'])->group(function() {
 
 
 }); // End Admin group middleware
-
 
 
 //// Instructor group middleware
