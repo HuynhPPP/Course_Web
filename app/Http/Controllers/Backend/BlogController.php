@@ -216,7 +216,7 @@ class BlogController extends Controller
 
     public function BlogLists()
     {
-        $blog = BlogPost::latest()->get();
+        $blog = BlogPost::latest()->paginate(2);
         $blog_category = BlogCategory::latest()->get();
         $post = BlogPost::latest()->limit(3)->get();
 
