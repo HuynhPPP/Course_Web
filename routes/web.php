@@ -76,6 +76,8 @@ Route::post('/store/review', [ReviewController::class, 'StoreReview'])->name('st
 Route::get('/blog/details/{slug}', [BlogController::class, 'BlogDetails']);
 Route::get('/blog/category/list/{id}', [BlogController::class, 'BlogCategoryLists']);
 Route::get('/blog', [BlogController::class, 'BlogLists'])->name('blog_all');
+
+Route::post('/mark-notification-as-read/{notification}', [CartController::class, 'MarkAsRead']);
 //// End Route Accessable for All
 
 Route::get('/dashboard', function () {
