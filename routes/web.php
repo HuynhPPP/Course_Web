@@ -168,11 +168,17 @@ Route::middleware(['auth','roles:admin'])->group(function() {
         
     });
 
-    // Admin Coupon All Route
+    // Admin SMTP Setting All Route
     Route::controller(SettingController::class)->group(function(){
         Route::get('/smtp/setting','SmtpSetting')->name('smtp.setting');
         Route::post('/update/stmp','SmtpUpdate')->name('update.stmp');
         
+    });
+
+    // Admin Site Setting All Route
+    Route::controller(SettingController::class)->group(function(){
+        Route::get('/site/setting','SiteSetting')->name('site.setting');
+        Route::post('/update/site','UpdateSite')->name('update.site');
     });
 
     // Admin All Order Route
