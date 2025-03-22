@@ -8,7 +8,7 @@
         </div>
         <div class="toggle-icon ms-auto"><i class='bx bx-arrow-back'></i>
         </div>
-     </div>
+    </div>
     <!--navigation-->
     <ul class="metismenu" id="menu">
         <li>
@@ -18,7 +18,7 @@
                 <div class="menu-title">Dashboard</div>
             </a>
         </li>
-        
+
         <li class="menu-label">UI Elements</li>
         <li>
             <a href="javascript:;" class="has-arrow">
@@ -93,8 +93,10 @@
                 <div class="menu-title">Manage Orders</div>
             </a>
             <ul>
-                <li> <a href="{{ route('admin.pending.order') }}"><i class='bx bx-radio-circle'></i>Pending Orders</a></li>
-                <li> <a href="{{ route('admin.confirm.order') }}"><i class='bx bx-radio-circle'></i>Confirm Orders</a></li>
+                <li> <a href="{{ route('admin.pending.order') }}"><i class='bx bx-radio-circle'></i>Pending Orders</a>
+                </li>
+                <li> <a href="{{ route('admin.confirm.order') }}"><i class='bx bx-radio-circle'></i>Confirm Orders</a>
+                </li>
             </ul>
         </li>
 
@@ -116,8 +118,10 @@
                 <div class="menu-title">Manage Review</div>
             </a>
             <ul>
-                <li> <a href="{{ route('admin.pending.review') }}"><i class='bx bx-radio-circle'></i>Pending Review</a></li>
-                <li> <a href="{{ route('admin.active.review') }}"><i class='bx bx-radio-circle'></i>Active Review</a></li>
+                <li> <a href="{{ route('admin.pending.review') }}"><i class='bx bx-radio-circle'></i>Pending Review</a>
+                </li>
+                <li> <a href="{{ route('admin.active.review') }}"><i class='bx bx-radio-circle'></i>Active Review</a>
+                </li>
             </ul>
         </li>
 
@@ -143,6 +147,18 @@
             <ul>
                 <li> <a href="{{ route('all.permission') }}"><i class='bx bx-radio-circle'></i>All Permission</a>
                 </li>
+
+                <li> <a href="{{ route('all.roles') }}"><i class='bx bx-radio-circle'></i>All Roles</a>
+                </li>
+
+                <li> <a href="{{ route('add.roles.permission') }}"><i class='bx bx-radio-circle'></i>Add Roles In
+                        Permission</a>
+                </li>
+
+                <li> <a href="{{ route('all.roles.permission') }}"><i class='bx bx-radio-circle'></i>All Roles
+                        In
+                        Permission</a>
+                </li>
             </ul>
         </li>
         <li>
@@ -158,7 +174,7 @@
                 </li>
             </ul>
         </li>
-        
+
         <li>
             <a href="https://themeforest.net/user/codervent" target="_blank">
                 <div class="parent-icon"><i class="bx bx-support"></i>

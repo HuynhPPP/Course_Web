@@ -234,7 +234,7 @@ Route::middleware(['auth','roles:admin'])->group(function() {
         Route::get('/delete/post/{id}','DeletePost')->name('delete.post');
     });
 
-    // Admin Role & Permission All Route
+    // Admin Permission All Route
     Route::controller(RoleController::class)->group(function(){
         Route::get('/all/permission','AllPermission')->name('all.permission');
         Route::get('/add/permission','AddPermission')->name('add.permission');
@@ -242,7 +242,34 @@ Route::middleware(['auth','roles:admin'])->group(function() {
         Route::get('/delete/permission/{id}','DeletePermission')->name('delete.permission');
         Route::post('/store/permission','StorePermission')->name('store.permission');
         Route::post('/update/permission','UpdatePermission')->name('update.permission');
+
+        Route::get('/import/permission','ImportPermission')->name('import.permission');
+        Route::get('/export','Export')->name('export');
+        Route::post('/import','Import')->name('import');
     });
+
+    // Admin Role All Route
+    Route::controller(RoleController::class)->group(function(){
+        Route::get('/all/roles','AllRoles')->name('all.roles');
+        Route::get('/add/roles','AddRoles')->name('add.roles');
+        Route::get('/edit/roles/{id}','EditRoles')->name('edit.roles');
+        Route::post('/update/roles','UpdateRoles')->name('update.roles');
+        Route::get('/delete/roles/{id}','DeleteRoles')->name('delete.roles');
+        Route::post('/store/roles','StoreRoles')->name('store.roles');
+
+    });
+
+    // Admin Role In Permission All Route
+    Route::controller(RoleController::class)->group(function(){
+        Route::get('/add/roles/permission','AddRolesPermission')->name('add.roles.permission');
+        Route::post('/role/permission/store','RolePermissionStore')->name('role.permission.store');
+        Route::get('/all/roles/permission','AllRolesPermission')->name('all.roles.permission');
+        Route::get('/admin/edit/roles/{id}','AdminEditRoles')->name('admin.edit.roles');
+        Route::post('/admin/roles/update/{id}','AdminUpdateRoles')->name('admin.roles.update');
+        Route::get('/admin/delete/roles/{id}','AdminDeleteRoles')->name('admin.delete.roles');
+
+    });
+
 
 
 }); // End Admin group middleware
