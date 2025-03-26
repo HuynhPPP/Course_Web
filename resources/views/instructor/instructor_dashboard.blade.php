@@ -8,6 +8,8 @@
 	<!--favicon-->
 	<link rel="icon" href="{{ asset('backend/assets/images/logo.png') }}" type="image/png" />
 	<meta name="csrf-token" content="{{ csrf_token() }}">
+
+	@vite(['resources/js/app.js'])
 	<!--plugins-->
 	<link href="{{ asset('backend/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet" />
 	<link href="{{ asset('backend/assets/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />

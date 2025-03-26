@@ -8,12 +8,14 @@
 
     <title>@yield('title')</title>
 
+    @vite(['resources/js/app.js'])
+
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Favicon -->
-    <link rel="icon" sizes="16x16" href="{{ asset('frontend/') }}{{ asset('frontend/images/favicon.png') }}">
+    <link rel="icon" sizes="16x16" href="{{ asset('frontend/images/favicon.png') }}">
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 

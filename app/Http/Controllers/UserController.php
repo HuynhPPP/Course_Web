@@ -93,4 +93,9 @@ class UserController extends Controller
         );
         return back()->with($notification);
     }
+
+    public function LiveChat()
+    {
+        return view('frontend.dashboard.live_chat');
+    }
 }
