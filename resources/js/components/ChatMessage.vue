@@ -79,7 +79,7 @@
                 <div class="card-header text-center myrow">
                     <strong> {{ allMessages.user.name }} </strong>
                 </div>
-                <div class="card-body chat-msg">
+                <div class="card-body chat-msg" style="max-height: 400px; overflow-y: auto;">
                     <ul class="chat" v-for="(msg, index) in allMessages.messages" :key="index">
 
                         <!-- Tin nhắn của người gửi -->

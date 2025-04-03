@@ -35,6 +35,8 @@
   </div>
 </template>
 
+
+
 <script>
 export default {
   props: ['receiverid', 'receivername'],
@@ -43,7 +45,7 @@ export default {
     return {
       form: {
         msg: "",
-        receiver_id : this.receiverid,
+        receiver_id: this.receiverid,
       },
       errors: {},
       successMessage: {},
@@ -52,15 +54,18 @@ export default {
 
   methods: {
     sendMsg() {
-      axios.post('/send-message',this.form)
-      .then((res) => {
-        this.form.msg = "";
-        this.successMessage = res.data;
-        console.log(res.data);
-      }).catch((err) => {
-        this.errors = err.response.data.errors;
-      })
+      axios.post('/send-message', this.form)
+        .then((res) => {
+          this.form.msg = "";
+          this.successMessage = res.data;
+          console.log(res.data);
+        }).catch((err) => {
+          this.errors = err.response.data.errors;
+        })
     }
-  }
+  },
+
+  
+
 }
 </script>
